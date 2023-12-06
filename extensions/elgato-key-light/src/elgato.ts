@@ -88,7 +88,6 @@ export class KeyLight {
   }
 
   async setBrightness(value: number) {
- 
     let newBrightness;
     for (let x = 0; x < KeyLight.keyLights.length; x++) {
       try {
