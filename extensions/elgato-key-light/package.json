@@ -42,6 +42,21 @@
       "mode": "no-view"
     },
     {
+      "name": "setBrightness",
+      "title": "Set Brightness",
+      "subtitle": "Elgato Key Light",
+      "description": "Set Key Light brightness to a specific value",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "brightness",
+          "placeholder": "100",
+          "type": "text",
+          "description": "Brightness value between 0 and 100"
+        }
+      ]
+    },
+    {
       "name": "increaseTemperature",
       "title": "Increase Color Temperature",
       "subtitle": "Elgato Key Light",

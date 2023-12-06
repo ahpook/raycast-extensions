@@ -1,7 +1,7 @@
 import axios from "axios";
 import Bonjour, { RemoteService } from "bonjour";
 import { waitUntil } from "./utils";
-import { getPreferenceValues } from "@raycast/api";
+import { getPreferenceValues, LaunchProps } from "@raycast/api";
 
 const WARM_TEMPERATURE = 344; // 2900k
 const COLD_TEMPERATURE = 143; // 7000k
@@ -84,6 +84,22 @@ export class KeyLight {
       }
     }
 
+    return newBrightness;
+  }
+
+  async setBrightness(value: number) {
+ 
+    let newBrightness;
+    for (let x = 0; x < KeyLight.keyLights.length; x++) {
+      try {
+        const keyLight = await this.getKeyLight(KeyLight.keyLights[x].service);
+        newBrightness = value;
+        await this.updateKeyLight(KeyLight.keyLights[x].service, { brightness: newBrightness });
+      } catch (e) {
+        throw new Error("Failed setting brightness");
+      }
+    }
+  
     return newBrightness;
   }
 
