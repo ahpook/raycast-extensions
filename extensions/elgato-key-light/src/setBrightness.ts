@@ -5,7 +5,7 @@ import { run } from "./utils";
 const command = async () => {
   await closeMainWindow({ clearRootSearch: true });
   
-  const args = { brightness: 50 };
+  const args = { brightness: 10 };
   const brightnessValue = args.brightness;
   
   if (brightnessValue <= 0 || brightnessValue >= 100) {

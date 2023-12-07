@@ -52,7 +52,8 @@
           "name": "brightness",
           "placeholder": "100",
           "type": "text",
-          "description": "Brightness value between 0 and 100"
+          "description": "Brightness value between 0 and 100",
+          "required": true
         }
       ]
     },
