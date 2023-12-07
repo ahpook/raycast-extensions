@@ -1,4 +1,4 @@
-import { closeMainWindow  } from "@raycast/api";
+import { closeMainWindow } from "@raycast/api";
 import { KeyLight } from "./elgato";
 import { run } from "./utils";
 
@@ -8,7 +8,7 @@ const command = async () => {
   const args = { brightness: 50 };
   const brightnessValue = args.brightness;
   
-  if (brightnessValue <= 0 || brightnessValue > 100) {
+  if (brightnessValue <= 0 || brightnessValue >= 100) {
     return "Brightness must be between 0 and 100";
   }
 
@@ -16,7 +16,7 @@ const command = async () => {
   const result = await keyLight.setBrightness(brightnessValue);
 
   return result
-    ? `Set brightness to ${brightnessValue.toLocaleString("en", { maximumFractionDigits: 0 })}%`
+    ? `Set brightness to ${brightnessValue}%`
     : "Error setting brightness";
 };
 

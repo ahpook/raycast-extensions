@@ -46,7 +46,7 @@
       "title": "Set Brightness",
       "subtitle": "Elgato Key Light",
       "description": "Set Key Light brightness to a specific value",
-      "mode": "view",
+      "mode": "no-view",
       "arguments": [
         {
           "name": "brightness",

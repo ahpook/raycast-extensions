@@ -65,7 +65,7 @@ export class KeyLight {
         newBrightness = Math.min(keyLight.brightness + 5, 100);
         await this.updateKeyLight(KeyLight.keyLights[x].service, { brightness: newBrightness });
       } catch (e) {
-        throw new Error("Failed increasing brightness");
+        throw new Error("Failed increasing brightness for light ${x}");
       }
     }
 
@@ -80,26 +80,25 @@ export class KeyLight {
         newBrightness = Math.min(keyLight.brightness - 5, 100);
         await this.updateKeyLight(KeyLight.keyLights[x].service, { brightness: newBrightness });
       } catch (e) {
-        throw new Error("Failed increasing brightness");
+        throw new Error("Failed decreasing brightness for light ${x}");
       }
     }
 
     return newBrightness;
   }
 
-  async setBrightness(value: number) {
-    let newBrightness;
+  async setBrightness(value: number ) {
+    const brightnessValue = value;
     for (let x = 0; x < KeyLight.keyLights.length; x++) {
       try {
         const keyLight = await this.getKeyLight(KeyLight.keyLights[x].service);
-        newBrightness = value;
-        await this.updateKeyLight(KeyLight.keyLights[x].service, { brightness: newBrightness });
+        await this.updateKeyLight(KeyLight.keyLights[x].service, { brightness: brightnessValue });
       } catch (e) {
-        throw new Error("Failed setting brightness");
+        throw new Error("Failed setting brightness for light ${x}");
       }
     }
   
-    return newBrightness;
+    return brightnessValue;
   }
 
   async increaseTemperature() {
