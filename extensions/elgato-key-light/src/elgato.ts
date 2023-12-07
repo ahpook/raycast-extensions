@@ -1,7 +1,7 @@
 import axios from "axios";
 import Bonjour, { RemoteService } from "bonjour";
 import { waitUntil } from "./utils";
-import { getPreferenceValues, LaunchProps } from "@raycast/api";
+import { getPreferenceValues } from "@raycast/api";
 
 const WARM_TEMPERATURE = 344; // 2900k
 const COLD_TEMPERATURE = 143; // 7000k
@@ -50,7 +50,7 @@ export class KeyLight {
         newState = !keyLight.on;
         await this.updateKeyLight(KeyLight.keyLights[x].service, { on: newState });
       } catch (e) {
-        throw new Error("Failed toggling Key Light");
+        throw new Error("Failed toggling Key Light ${x}");
       }
     }
 
@@ -109,7 +109,7 @@ export class KeyLight {
         newTemperature = Math.max(keyLight.temperature + TEMPERATURE_STEP, COLD_TEMPERATURE);
         await this.updateKeyLight(KeyLight.keyLights[x].service, { temperature: newTemperature });
       } catch (e) {
-        throw new Error("Failed decreasing temperature");
+        throw new Error("Failed decreasing temperature for light ${x}");
       }
     }
 
@@ -124,7 +124,7 @@ export class KeyLight {
         newTemperature = Math.max(keyLight.temperature - TEMPERATURE_STEP, COLD_TEMPERATURE);
         await this.updateKeyLight(KeyLight.keyLights[x].service, { temperature: newTemperature });
       } catch (e) {
-        throw new Error("Failed decreasing temperature");
+        throw new Error("Failed decreasing temperature for light ${x}");
       }
     }
 
